@@ -11,11 +11,11 @@ def read_requirements():
 
 setuptools.setup(
     name='mkr',
-    version='0.0.8',
+    version='0.0.1',
     author='Khaled Ibrahim',
-    author_email='khaled.ibrahim@wfp.org',
-    description='Enterprise Deduplication Data Science Package',
-    url='https://github.com/Khaledhamza77/mkr',
+    author_email='khaledhamza@aucegypt.edu',
+    description='A Python package for face evaluation and quality assessment',
+    url='https://github.com/Khaledhamza77/FaceEval',
     packages=setuptools.find_packages(),
     install_requires=read_requirements(),
     python_requires='>=3.8'
