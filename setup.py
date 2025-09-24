@@ -10,7 +10,7 @@ def read_requirements():
         return []
 
 setuptools.setup(
-    name='mkr',
+    name='faceEval',
     version='1.0.0',
     author='Khaled Ibrahim',
     author_email='khaledhamza@aucegypt.edu',
