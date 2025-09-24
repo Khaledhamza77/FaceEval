@@ -11,7 +11,7 @@ def read_requirements():
 
 setuptools.setup(
     name='mkr',
-    version='0.0.1',
+    version='1.0.0',
     author='Khaled Ibrahim',
     author_email='khaledhamza@aucegypt.edu',
     description='A Python package for face evaluation and quality assessment',
