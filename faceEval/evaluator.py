@@ -1,6 +1,5 @@
 import cv2
 import glob
-import numpy as np
 import onnxruntime
 import os.path as osp
 from PIL import Image
