@@ -1,3 +1,6 @@
+ml-dtypes==0.5.1
+numexpr==2.8.4
+onnxruntime==1.20.1
 onnxruntime-gpu
 opencv-python==4.11.0.86
 insightface==0.7.3
