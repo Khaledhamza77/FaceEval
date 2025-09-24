@@ -1,11 +1,12 @@
 import cv2
 import glob
+import logging
 import onnxruntime
 import os.path as osp
-from PIL import Image
-from .quality.evaluate import ImageQuality
 from insightface.utils import face_align
+from .quality.evaluate import ImageQuality
 from insightface.model_zoo import model_zoo
+from PIL import Image, UnidentifiedImageError
 from insightface.utils import DEFAULT_MP_NAME, ensure_available
 
 
@@ -18,6 +19,11 @@ class FaceEvaluator:
                  box_l_r=0.9, box_s_r=0.2,
                  occ_range=30, occ_t=0.8,
                  testing=False, **kwargs):
+
+        logging.basicConfig(
+            format='%(asctime)s - %(levelname)s - %(message)s',
+            level=logging.INFO
+        )
 
         onnxruntime.set_default_logger_severity(3)
         model_dir = ensure_available('models', DEFAULT_MP_NAME, root=root)
@@ -70,7 +76,22 @@ class FaceEvaluator:
             return img, aimg, kps.astype(int), bboxes[0]
         else:
             return count, None, None, None
+
+    def image_not_corrupted(self, file_path):
+        try:
+            with Image.open(file_path) as img:
+                img.verify()
+            return True
+        except (IOError, UnidentifiedImageError):
+            return False
     
     def run(self, img_path):
-        img, aimg, kps, box = self.extract_face(img_path)
-        return self.quality.quality_checks(img=img, aimg=aimg, kps=kps, box=box)
+        if self.image_not_corrupted(img_path):
+            img, aimg, kps, box = self.extract_face(img_path)
+            if isinstance(img, int):
+                logging.warning(f'Detected {img} faces.')
+                return f'{img} faces'
+            return self.quality.quality_checks(img=img, aimg=aimg, kps=kps, box=box)
+        else:
+            logging.error(f'Image {img_path} is corrupted or not supported.')
+            return 'Image is corrupted or not supported.'
