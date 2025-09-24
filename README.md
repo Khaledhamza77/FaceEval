@@ -59,7 +59,9 @@ This image is transformed to an intrinsic image using the bilateral filter and g
 
 Afterwards, we can see that the algorithm is able to find occlusions in: Nose and Lips. It outputs the cropped feature-level intrinsic image.
 
-<img src="./demo/occ1.png" alt="drawing" width="200"/><img src="./demo/occ2.png" alt="drawing" width="200"/>
+<img src="./demo/occ1.png" alt="drawing" width="200"/>
+
+<img src="./demo/occ2.png" alt="drawing" width="200"/>
 
 Another Example would be of a horizontal pose, where you can see what I refer to be left and right triangles. If you connect the three leftmost dots you will construct a triangle. The two green points with the nose's red point create the right triangle. Now, in this case, the left triangle was **h_t** bigger than the right triangle as shown below:
 
