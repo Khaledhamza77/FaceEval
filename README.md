@@ -50,14 +50,14 @@ if __name__ == "__main__":
 
 ### Example
 Given an image path, the first step would be detecting the face and identifying the bounding box and key points:
-![Alt text]('./demo/masked.png')
+![Alt text](./demo/masked.png)
 This image is transformed to an intrinsic image using the bilateral filter and grayscaling, for more information about what exactly happens here check the method called get_intrinsic in faceEval/quality/pyramid.py
-![Alt text]('./demo/intrinsic.png')
+![Alt text](./demo/intrinsic.png)
 Afterwards, we can see that the algorithm is able to find occlusions in: Nose and Lips. It outputs the cropped feature-level intrinsic image.
-![Alt text]('./demo/occ1.png')![Alt text]('./demo/occ2.png')
+![Alt text](./demo/occ1.png')![Alt text](./demo/occ2.png)
 
 Another Example would be of a horizontal pose, where you can see what I refer to be left and right triangles. If you connect the three leftmost dots you will construct a triangle. The two green points with the nose's red point create the right triangle. Now, in this case, the left triangle was **h_t** bigger than the right triangle as shown below:
-![Alt text]('./demo/horizontal_pose.png')
+![Alt text](./demo/horizontal_pose.png)
 
 ## Package Structure
 ```bash
